@@ -1,6 +1,6 @@
 const discord_JS = require ("discord.js");
 const config = require('./config.json');
-const functions = require('./functions.ts');
+const functions = require('./ban-kick.ts');
 
 const {Client, Intents} = discord_JS;
 const client = new Client({

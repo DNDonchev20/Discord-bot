@@ -1,22 +1,33 @@
 const { MessageEmbed } = require('discord.js');
 
-var reason = "";
-
 module.exports = {
     banMember: function(message, args) {
         const target = message.mentions.users.first();
         const embed = new MessageEmbed();
+        var reason = "";
         
         if (target) {
             const memberTarget = message.guild.members.cache.get(target.id);
             
             if (memberTarget.bannable) {
+                if (args[2]) {
+                    for (var i = 2; i < args.length; i++) {
+                        if (i == args.length - 1) {
+                            reason += `${args[i]}`
+
+                        }
+                        else {
+                            reason += `${args[i]} `
+                        }
+                    }
+                }
+
                 embed.setColor("#26ff00");
                 embed.setTitle("Success");
-                embed.setDescription(`Successfully banned <@${target.id}>!`);
+                embed.setDescription(`Successfully banned <@${target.id}> for ${reason}!`);
                 
-                memberTarget.send("Leka baluk!").then(() => {
-                    memberTarget.ban();
+                memberTarget.send(`Banned from ${message.guild.name} for ${reason}!`).then(() => {
+                    memberTarget.ban(reason);
                 })
             }
             else {
@@ -35,17 +46,30 @@ module.exports = {
     kickMember: function(message, args) {
         const target = message.mentions.users.first();
         const embed = new MessageEmbed();
+        var reason = "";
 
         if (target) {
             const memberTarget = message.guild.members.cache.get(target.id);
 
             if (memberTarget.kickable) {
+                if (args[2]) {
+                    for (var i = 2; i < args.length; i++) {
+                        if (i == args.length - 1) {
+                            reason += `${args[i]}`
+
+                        }
+                        else {
+                            reason += `${args[i]} `
+                        }
+                    }
+                }
+                
                 embed.setColor("#26ff00");
                 embed.setTitle("Success");
-                embed.setDescription(`Successfully kicked <@${target.id}>!`);
+                embed.setDescription(`Successfully kicked <@${target.id}> for ${reason}!`);
                 
-                memberTarget.send("Leka baluk!").then(() => {
-                    memberTarget.kick();
+                memberTarget.send(`Kicked from ${message.guild.name} for ${reason}!`).then(() => {
+                    memberTarget.kick(reason);
                 })   
             }
             else {
