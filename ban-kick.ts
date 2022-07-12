@@ -81,7 +81,9 @@ module.exports = {
             message.reply({embeds: [embed]})
         }
         else {
-            message.reply("Couldn't find user!");
+            embed.setColor("#ff0000");
+            embed.setTitle("Error");
+            embed.setDescription(`User is not found!`);
         }
     }
 }
