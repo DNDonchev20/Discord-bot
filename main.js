@@ -31,7 +31,8 @@ client.on("messageCreate", (message) => {
             if (args[0] == "!ban") {
                 functions.banMember(message, args);
             }
-            else if (args[0] == "!kick") {
+            
+            if (args[0] == "!kick") {
                 functions.kickMember(message, args);
             }
         }
