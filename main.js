@@ -1,5 +1,6 @@
-const discord_JS = require ("discord.js")
+const discord_JS = require ("discord.js");
 const config = require('./config.json');
+const functions = require('./functions.ts');
 
 const {Client, Intents} = discord_JS;
 const client = new Client({
@@ -14,8 +15,27 @@ client.on('ready', () => {
 });
 
 client.on("messageCreate", (message) => {
-    if (message.content[0] == config.prefix) {
-        message.channel.send("Hello");
+    if (message.author.id != client.user.id) {
+        var args = message.content.split(" ");
+        var simpleCommand = false;
+    
+        // loop through commands and check for equality with message.content
+        for (var i = 0; i < config.cmds.length; i++) {
+            if (config.cmds[i]["command"] == message.content) {
+                simpleCommand = true;
+                message.reply(config.cmds[i]["answer"]);
+            }
+        }
+        
+        if (!simpleCommand) {
+            if (args[0] == "!ban") {
+                functions.banMember(message, args);
+            }
+            else if (args[0] == "!kick") {
+                functions.kickMember(message, args);
+            }
+        }
+
     }
 });
 
