@@ -1,9 +1,12 @@
 const discord_JS = require ("discord.js");
-const mongoose = require('mongoose')
 const config = require('./config.json');
 const ban_kick = require('./ban-kick.js');
 const timeout = require('./timeout.js');
 const remove = require('./remove.js');
+
+const mongoose = require('mongoose')
+const botSchema = require("./schemas/bot-schema.js")
+const db = mongoose.connection.useDb("bot")
 
 const {Client, Intents} = discord_JS;
 const client = new Client({
@@ -16,7 +19,19 @@ const client = new Client({
 client.on('ready', async () => {
     await mongoose.connect(config.mongo, {keepAlive: true});
 
-    console.log(`Logged in as ${client.user.tag}!`);
+    const bot = {
+        user_id: "328434761540304898",
+        warnings: ["gei"],
+    }
+
+    try {
+        console.log(`Logged in as ${client.user.tag}!`);
+        await new botSchema(bot).save()
+    }
+    finally {
+        mongoose.connection.close();
+    }
+
 });
 
 client.on("messageCreate", (message) => {
