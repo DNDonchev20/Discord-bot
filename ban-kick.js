@@ -1,7 +1,8 @@
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
-    banMember: function(message, args) {
+
+    banMember: function(message, args) {      
         const target = message.mentions.users.first();
         const embed = new MessageEmbed();
         var reason = "";
