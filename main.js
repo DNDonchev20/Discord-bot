@@ -1,6 +1,8 @@
 const discord_JS = require ("discord.js");
 const config = require('./config.json');
-const functions = require('./ban-kick.js');
+const ban_kick = require('./ban-kick.js');
+const timeout = require('./timeout.js');
+const remove = require('./remove.js');
 
 const {Client, Intents} = discord_JS;
 const client = new Client({
@@ -29,12 +31,21 @@ client.on("messageCreate", (message) => {
         
         if (!simpleCommand) {
             if (args[0] == "!ban") {
-                functions.banMember(message, args);
+                ban_kick.banMember(message, args);
             }
             
-            if (args[0] == "!kick") {
-                functions.kickMember(message, args);
+            else if (args[0] == "!kick") {
+                ban_kick.kickMember(message, args);
             }
+
+            else if (args[0] == "!timeout") {
+                timeout.timeoutMember(message, args);
+            }
+            
+            else if (args[0] == "!remove") {
+                remove.removeCommands(message, args);
+            }
+            
         }
 
     }

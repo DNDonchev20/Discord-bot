@@ -30,8 +30,8 @@ module.exports = {
                     
                     if(reason != "")
                     {
-                        embed.setDescription(`Successfully banned <@${target.id}> for ${reason}!`);
-                        memberTarget.send(`Banned from **${message.guild.name}** for ${reason}!`).then(() => {
+                        embed.setDescription(`Successfully banned <@${target.id}> for ${reason}.`);
+                        memberTarget.send(`Banned from **${message.guild.name}** for ${reason}.`).then(() => {
                             memberTarget.ban({"reason": reason}).catch(console.error);
                         })
                     }
@@ -46,20 +46,20 @@ module.exports = {
                 else {
                     embed.setColor("#ff0000");
                     embed.setTitle("Error");
-                    embed.setDescription(`User <@${target.id}> can't be banned!`);
+                    embed.setDescription(`User <@${target.id}> couldn't be banned!`);
                 }
     
             }
             else {
                 embed.setColor("#ff0000");
                 embed.setTitle("Error");
-                embed.setDescription(`User is not found!`);
+                embed.setDescription("User was not found.");
             }
         }
         else {
             embed.setColor("#ff0000");
             embed.setTitle("Error");
-            embed.setDescription("You don't have the required permissions do to it");
+            embed.setDescription("You don't have the required permissions do to it.");
         }
 
         message.reply({embeds: [embed]});
@@ -127,6 +127,7 @@ module.exports = {
             embed.setTitle("Error");
             embed.setDescription("You don't have the required permissions do to it");
         }
+        
         message.reply({embeds: [embed]})
     }
 }
