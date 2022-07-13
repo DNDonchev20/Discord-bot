@@ -1,4 +1,5 @@
 const discord_JS = require ("discord.js");
+const mongoose = require('mongoose')
 const config = require('./config.json');
 const ban_kick = require('./ban-kick.js');
 const timeout = require('./timeout.js');
@@ -12,7 +13,9 @@ const client = new Client({
     ]
 });
 
-client.on('ready', () => {
+client.on('ready', async () => {
+    await mongoose.connect(config.mongo, {keepAlive: true});
+
     console.log(`Logged in as ${client.user.tag}!`);
 });
 
