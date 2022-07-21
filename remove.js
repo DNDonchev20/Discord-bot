@@ -21,17 +21,19 @@ module.exports = {
                     }
                 }
 
-                if (isNaN(parseInt(args[2].replace(/[<@>]/g, "")[0]))) {
-                    embed.setColor("#ff0000");
-                    embed.setTitle("Error");
-                    embed.setDescription("Couldn't find user.");
-                }
-                else {
-                    embed.setColor("#26ff00");
-                    embed.setTitle("Success");
-                    embed.setDescription(`Successfully removed ban from <@${args[2].replace(/[<@>]/g, "")}>`)
-    
-                    message.guild.members.unban(args[2].replace(/[<@>]/g, ""), reason);
+                if (args[2]) {
+                    if (isNaN(parseInt(args[2].replace(/[<@>]/g, "")))) {
+                        embed.setColor("#ff0000");
+                        embed.setTitle("Error");
+                        embed.setDescription("Couldn't find user.");
+                    }
+                    else {
+                        embed.setColor("#26ff00");
+                        embed.setTitle("Success");
+                        embed.setDescription(`Successfully removed ban from <@${args[2].replace(/[<@>]/g, "")}>`)
+        
+                        message.guild.members.unban(args[2].replace(/[<@>]/g, ""), reason);
+                    }
                 }
 
                 

@@ -3,10 +3,12 @@ const config = require('./config.json');
 const ban_kick = require('./ban-kick.js');
 const timeout = require('./timeout.js');
 const remove = require('./remove.js');
+const warn = require('./warn.js');
+const check = require('./check.js');
 
 const mongoose = require('mongoose')
 const botSchema = require("./schemas/bot-schema.js")
-const db = mongoose.connection.useDb("bot")
+// const db = mongoose.connection.useDb("bot")
 
 const {Client, Intents} = discord_JS;
 const client = new Client({
@@ -17,21 +19,23 @@ const client = new Client({
 });
 
 client.on('ready', async () => {
-    await mongoose.connect(config.mongo, {keepAlive: true});
+    // await mongoose.connect(config.mongo, {keepAlive: true});
 
-    const bot = {
-        user_id: "328434761540304898",
-        warnings: ["gei"],
-    }
+    // var bot = {
+    //     server_id: "996363948263755846",
+    //     user_id: "328434761540304898",
+    //     warning_id: "1",
+    //     warning_message: "test",
+    // }
 
-    try {
-        console.log(`Logged in as ${client.user.tag}!`);
-        await new botSchema(bot).save()
-    }
-    finally {
-        mongoose.connection.close();
-    }
-
+    // try {
+    //     await new botSchema(bot).save()
+    // }
+    // finally {
+    //     mongoose.connection.close();
+    // }
+            
+    console.log(`Logged in as ${client.user.tag}!`);
 });
 
 client.on("messageCreate", (message) => {
@@ -63,7 +67,14 @@ client.on("messageCreate", (message) => {
             else if (args[0] == "!remove") {
                 remove.removeCommands(message, args);
             }
-            
+
+            else if (args[0] == "!warn") {
+                warn.warnMember(config.mongo, message, args);
+            }
+
+            else if (args[0] == "!check") {
+                check.checkMember(config.mongo, message, args);
+            }
         }
 
     }
