@@ -1,0 +1,7 @@
+{
+    "cmds": [
+        {"command": "!ping", "answer": "Pong!"},
+        {"command": "!hello", "answer": "Hi!"},
+        {"command": "!fight", "answer": "zaet sum pisha uchilishtna dokumentaciq"}
+    ]
+}

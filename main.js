@@ -5,6 +5,7 @@ const timeout = require('./timeout.js');
 const remove = require('./remove.js');
 const warn = require('./warn.js');
 const check = require('./check.js');
+const commands = require('./commands.json');
 
 const mongoose = require('mongoose')
 const botSchema = require("./schemas/bot-schema.js")
@@ -44,10 +45,10 @@ client.on("messageCreate", (message) => {
         var simpleCommand = false;
     
         // loop through commands and check for equality with message.content
-        for (var i = 0; i < config.cmds.length; i++) {
-            if (config.cmds[i]["command"] == message.content) {
+        for (var i = 0; i < commands.cmds.length; i++) {
+            if (commands.cmds[i]["command"] == message.content) {
                 simpleCommand = true;
-                message.reply(config.cmds[i]["answer"]);
+                message.reply(commands.cmds[i]["answer"]);
             }
         }
         

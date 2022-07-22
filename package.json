@@ -22,7 +22,8 @@
     "discord.js": "^13.8.1",
     "dotenv": "^16.0.1",
     "mongodb": "^4.7.0",
-    "mongoose": "^6.4.4"
+    "mongoose": "^6.4.4",
+    "nodejs": "^0.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.19"

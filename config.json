@@ -1,10 +1,5 @@
 {
     "prefix": "!",
     "token": "OTk2MzY2MjUzMTkzMTc1MDYw.GDXBFb.Ylb-Yb70AnkAYd5-1lxOam21SJacueTjzu56cE",
-    "mongo": "mongodb+srv://SMToshev23:SMToshev22@cluster.hv2vos9.mongodb.net/?retryWrites=true&w=majority",
-    "cmds": [
-        {"command": "!ping", "answer": "Pong!"},
-        {"command": "!hello", "answer": "Hi!"},
-        {"command": "!fight", "answer": "zaet sum pisha uchilishtna dokumentaciq"}
-    ]
+    "mongo": "mongodb+srv://SMToshev23:SMToshev22@cluster.hv2vos9.mongodb.net/?retryWrites=true&w=majority"
 }
