@@ -1,4 +1,4 @@
 npm install
 npm install nodejs
-npm install discordjs
+npm install discord.js
 npm install mongodb
