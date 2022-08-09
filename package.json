@@ -19,11 +19,12 @@
   "homepage": "https://github.com/DNDonchev20/Discord-bot#readme",
   "dependencies": {
     "@discordjs/rest": "^0.5.0",
-    "discord.js": "^13.8.1",
+    "discord.js": "^13.9.2",
     "dotenv": "^16.0.1",
-    "mongodb": "^4.7.0",
+    "mongodb": "^4.8.1",
     "mongoose": "^6.4.4",
-    "nodejs": "^0.0.0"
+    "nodejs": "^0.0.0",
+    "npm": "^8.16.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.19"

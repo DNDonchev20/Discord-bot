@@ -48,13 +48,12 @@ module.exports = {
             }
             else {
                 try {
-                    await new botSchema.find({server_id: message.guildId, user_id: target.id}).updateOne({warning_message}, reason).save();
+                    await botSchema.find({server_id: message.guildId, user_id: target.id}).updateOne({"warning_message": []}, reason).save();
                 }
                 finally {
                     mongoose.connection.close();
                 }
             }
-            
         }
     }
 }

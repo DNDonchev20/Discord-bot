@@ -7,10 +7,13 @@ module.exports = {
         const embed = new MessageEmbed();
         var removeCommand = "";
         var reason = "";
+
+        embed.setColor("#ff0000");
+        embed.setTitle("Error");
+        embed.setDescription("Wrong command provided!");
         
         if (args[1] == "ban")
         {  
-
             if (message.member.permissions.has("BAN_MEMBERS", true)) {
                 for (var i = 3; i < args.length; i++) {
                     if (i == args.length - 1) {
@@ -35,8 +38,9 @@ module.exports = {
                         message.guild.members.unban(args[2].replace(/[<@>]/g, ""), reason);
                     }
                 }
-
-                
+                else {
+                    embed.setDescription("The usage of this command is !remove ban <user> \nFe. !remove ban <@328434761540304898>")
+                }
             }
             else {
                 embed.setColor("#ff0000");
@@ -45,15 +49,7 @@ module.exports = {
             }
             
         }
-        else{
-            embed.setColor("#ff0000");
-            embed.setTitle("Error");
-            embed.setDescription("Wrong command provided!");
-        }
-
-        
-        
-        if (args[1] == "timeout")
+        else if (args[1] == "timeout")
         {
             if (target) {
                 const memberTarget = message.guild.members.cache.get(target.id);
@@ -76,11 +72,6 @@ module.exports = {
                 embed.setTitle("Error");
                 embed.setDescription("Couldn't find user.")
             }
-        }
-        else{
-            embed.setColor("#ff0000");
-            embed.setTitle("Error");
-            embed.setDescription("Wrong command provided!");
         }
 
         if (args[2]) {
